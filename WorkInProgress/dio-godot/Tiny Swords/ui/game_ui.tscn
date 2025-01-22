@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5qdm3j65jvm5"]
+
+[ext_resource type="Texture2D" uid="uid://d0ydfrn306s6f" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_c3kc7"]
+[ext_resource type="Script" path="res://ui/game_ui.gd" id="1_q8h63"]
+[ext_resource type="Texture2D" uid="uid://bt1ma3mwhf4k1" path="res://addons/Tiny Swords/Resources/Resources/G_Idle_(NoShadow).png" id="3_m8rvf"]
+[ext_resource type="Texture2D" uid="uid://7xdnlhydw7wv" path="res://addons/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="3_y13li"]
+
+[sub_resource type="SystemFont" id="SystemFont_4x7p4"]
+font_names = PackedStringArray("Impact", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_eao6m"]
+font = SubResource("SystemFont_4x7p4")
+font_size = 24
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx7i2"]
+texture = ExtResource("1_c3kc7")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[sub_resource type="SystemFont" id="SystemFont_yc41c"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqp2d"]
+font = SubResource("SystemFont_yc41c")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qih5m"]
+atlas = ExtResource("3_m8rvf")
+region = Rect2(40, 48, 56, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wu81"]
+atlas = ExtResource("3_y13li")
+region = Rect2(40, 56, 56, 40)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_q8h63")
+
+[node name="TimerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = 16.0
+offset_right = 47.5
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_eao6m")
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -341.0
+offset_top = 14.0
+offset_right = -13.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fx7i2")
+
+[node name="GoldLabel" type="Label" parent="Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -32.0
+offset_right = -13.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_sqp2d")
+
+[node name="GoldTexture" type="TextureRect" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.5
+offset_top = -51.5
+offset_right = 8.5
+offset_bottom = 76.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_qih5m")
+
+[node name="MeatLabel" type="Label" parent="Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = -32.0
+offset_right = 144.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_sqp2d")
+
+[node name="MeatTexture" type="TextureRect" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -49.0
+offset_right = 133.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_0wu81")

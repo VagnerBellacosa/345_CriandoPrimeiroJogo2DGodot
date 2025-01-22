@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0tqo6lkfhvq"]
+
+[ext_resource type="Texture2D" uid="uid://b1s1r0eqr8krw" path="res://icon.svg" id="1_bjpjr"]
+[ext_resource type="Script" path="res://player.gd" id="2_ywg6s"]
+
+[node name="World" type="Node2D"]
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 856.0
+offset_bottom = 449.0
+scale = Vector2(1.49955, 1.60313)
+color = Color(0.392157, 0.901961, 0.431373, 1)
+
+[node name="Tree" type="ColorRect" parent="."]
+offset_left = 649.0
+offset_top = 88.0
+offset_right = 709.0
+offset_bottom = 214.0
+scale = Vector2(1.38636, 1.64726)
+color = Color(0.152941, 0.368627, 0.168627, 1)
+
+[node name="River" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = 466.0
+offset_right = 886.0
+offset_bottom = 585.0
+rotation = 0.0436332
+scale = Vector2(1.45774, 1.23411)
+color = Color(0.152941, 0.670588, 0.823529, 1)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(290, 161)
+texture = ExtResource("1_bjpjr")
+script = ExtResource("2_ywg6s")

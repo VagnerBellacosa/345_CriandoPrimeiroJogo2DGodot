@@ -1,0 +1,118 @@
+[gd_scene load_steps=15 format=3 uid="uid://dowoy8rvl2bia"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_k8d4h"]
+[ext_resource type="PackedScene" uid="uid://bnnydnydnsyce" path="res://misc/skull.tscn" id="2_fugs0"]
+[ext_resource type="Texture2D" uid="uid://cft03g3my5ph7" path="res://addons/Tiny Swords/Resources/Sheep/HappySheep_Bouncing.png" id="2_gulhv"]
+[ext_resource type="PackedScene" uid="uid://bhl8dly2krkqe" path="res://misc/gold_sack.tscn" id="2_ucuwu"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="5_mch6g"]
+[ext_resource type="PackedScene" uid="uid://c3fmdt4smt5o3" path="res://ui/boss_hp_bar.tscn" id="6_k3ns2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b24vy"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b82yf"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu6t2"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0jgh"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lanpc"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioohd"]
+atlas = ExtResource("2_gulhv")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygbke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b24vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b82yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu6t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0jgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lanpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioohd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a2oyv"]
+radius = 57.5587
+
+[node name="BossSheep" type="CharacterBody2D" groups=["boss", "enemies"]]
+motion_mode = 1
+script = ExtResource("1_k8d4h")
+enemy_damage = 10
+health = 4000
+death_prefab = ExtResource("2_fugs0")
+drop_chance = 1.0
+drop_items = Array[PackedScene]([ExtResource("2_ucuwu")])
+drop_chances = Array[float]([1.0])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.266667, 0.266667, 0.266667, 1)
+position = Vector2(5.96046e-06, -51)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ygbke")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -37)
+shape = SubResource("CircleShape2D_a2oyv")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("5_mch6g")
+speed = 2.0
+
+[node name="DamageMarker" type="Marker2D" parent="."]
+position = Vector2(0, -36)
+
+[node name="BossHPCanvas" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="BossHPBar" parent="BossHPCanvas" instance=ExtResource("6_k3ns2")]
+unique_name_in_owner = true
+layout_direction = 1
+offset_left = -555.0
+offset_top = -43.0
+offset_right = 555.0
+offset_bottom = -16.0
+
+[node name="BossHPLabel" type="Label" parent="BossHPCanvas"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -41.0
+offset_right = 29.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "4000/4000"
+horizontal_alignment = 1
+vertical_alignment = 1

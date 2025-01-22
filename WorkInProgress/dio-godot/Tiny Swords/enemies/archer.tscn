@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://cysq8cg0qasbn"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_7sglu"]
+[ext_resource type="PackedScene" uid="uid://bnnydnydnsyce" path="res://misc/skull.tscn" id="2_bor21"]
+[ext_resource type="Texture2D" uid="uid://dnhdw6hxaa7x7" path="res://addons/Tiny Swords/Factions/Knights/Troops/Archer/Archer + Bow/Archer_Yellow_(NoArms).png" id="2_d6lw0"]
+[ext_resource type="PackedScene" uid="uid://b0hiwbyrwmf8i" path="res://misc/meat.tscn" id="3_jn1ku"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="5_46ecl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3nse"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr1ba"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j3cn"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhqnn"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jypih"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl5mi"]
+atlas = ExtResource("2_d6lw0")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4cvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3nse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr1ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j3cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhqnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jypih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl5mi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygevr"]
+radius = 21.095
+
+[node name="Archer" type="CharacterBody2D" groups=["archers", "enemies"]]
+motion_mode = 1
+script = ExtResource("1_7sglu")
+enemy_damage = 4
+health = 120
+death_prefab = ExtResource("2_bor21")
+drop_chance = 0.25
+drop_items = Array[PackedScene]([ExtResource("3_jn1ku")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22)
+sprite_frames = SubResource("SpriteFrames_q4cvo")
+autoplay = "default"
+frame = 4
+frame_progress = 0.669737
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_ygevr")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("5_46ecl")
+speed = 2.0
+
+[node name="DamageMarker" type="Marker2D" parent="."]
+position = Vector2(0, -48)

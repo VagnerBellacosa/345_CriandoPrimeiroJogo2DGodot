@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck8adv82ft175"]
+
+[ext_resource type="PackedScene" uid="uid://cio5bc7kf8qu0" path="res://player/player.tscn" id="1_sx4mp"]
+[ext_resource type="PackedScene" uid="uid://b0hiwbyrwmf8i" path="res://misc/meat.tscn" id="2_psrgx"]
+[ext_resource type="PackedScene" uid="uid://b3s60b88qrsfc" path="res://misc/golden_meat.tscn" id="3_4bouy"]
+[ext_resource type="PackedScene" uid="uid://bhl8dly2krkqe" path="res://misc/gold_sack.tscn" id="4_giuey"]
+
+[node name="TestMeat" type="Node2D"]
+
+[node name="Meat" parent="." instance=ExtResource("2_psrgx")]
+position = Vector2(268, 142)
+regeneration_amount = 5
+
+[node name="Meat2" parent="." instance=ExtResource("3_4bouy")]
+position = Vector2(437, 148)
+
+[node name="Meat3" parent="." instance=ExtResource("2_psrgx")]
+position = Vector2(601, 223)
+regeneration_amount = 5
+
+[node name="Meat4" parent="." instance=ExtResource("2_psrgx")]
+position = Vector2(649, 264)
+regeneration_amount = 5
+
+[node name="Meat5" parent="." instance=ExtResource("2_psrgx")]
+position = Vector2(567, 281)
+regeneration_amount = 5
+
+[node name="Player" parent="." instance=ExtResource("1_sx4mp")]
+position = Vector2(605, 238)
+health = 90.0
+
+[node name="GoldSack" parent="." instance=ExtResource("4_giuey")]
+position = Vector2(339, 298)
+
+[node name="GoldSack2" parent="." instance=ExtResource("4_giuey")]
+position = Vector2(606, 255)
+
+[node name="GoldSack3" parent="." instance=ExtResource("4_giuey")]
+position = Vector2(459, 407)

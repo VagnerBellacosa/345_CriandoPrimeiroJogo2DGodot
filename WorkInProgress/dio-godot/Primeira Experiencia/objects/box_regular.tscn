@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ydmj06dyycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpbbx"]
+size = Vector2(78.5234, 45.3438)
+
+[node name="box_regular" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wpbbx")
+
+[node name="Box" type="ColorRect" parent="CollisionShape2D"]
+offset_left = -39.0
+offset_top = -22.0
+offset_right = 39.0
+offset_bottom = 22.0

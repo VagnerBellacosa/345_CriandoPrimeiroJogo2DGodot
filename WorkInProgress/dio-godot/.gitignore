@@ -1,0 +1,3 @@
+*.exe
+/Tiny Swords/exports/web/
+.godot/

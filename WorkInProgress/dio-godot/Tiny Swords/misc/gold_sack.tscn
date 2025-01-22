@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhl8dly2krkqe"]
+
+[ext_resource type="Texture2D" uid="uid://cbyruoaywhgmq" path="res://addons/Tiny Swords/Resources/Resources/G_Idle.png" id="1_olq6t"]
+[ext_resource type="Script" path="res://misc/gold_sack.gd" id="2_r8yyv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j4ty"]
+radius = 27.2947
+
+[node name="GoldSack" type="Sprite2D"]
+y_sort_enabled = true
+position = Vector2(-2, -33)
+texture = ExtResource("1_olq6t")
+script = ExtResource("2_r8yyv")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 12)
+shape = SubResource("CircleShape2D_3j4ty")

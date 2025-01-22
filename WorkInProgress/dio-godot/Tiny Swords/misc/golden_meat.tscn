@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3s60b88qrsfc"]
+
+[ext_resource type="Texture2D" uid="uid://c18by4ji3wxgn" path="res://addons/Tiny Swords/Resources/Resources/M_Spawn.png" id="1_6t6hx"]
+[ext_resource type="Script" path="res://misc/life_regenerator.gd" id="2_iyjgp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otcdo"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68wl5"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuefo"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwh3r"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn55c"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5607"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gse7m"]
+atlas = ExtResource("1_6t6hx")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obgg4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otcdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68wl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuefo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwh3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn55c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5607")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gse7m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_saqxd"]
+radius = 27.2947
+
+[node name="Meat" type="AnimatedSprite2D"]
+self_modulate = Color(2, 1.8, 0, 1)
+sprite_frames = SubResource("SpriteFrames_obgg4")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(0, -30)
+script = ExtResource("2_iyjgp")
+regeneration_amount = 25
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_saqxd")
+debug_color = Color(0, 0.6, 0.701961, 0)

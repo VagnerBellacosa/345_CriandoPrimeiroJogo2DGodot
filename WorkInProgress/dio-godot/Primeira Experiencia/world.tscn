@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://t82hrjjr003t"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_068kc"]
+[ext_resource type="PackedScene" uid="uid://d0ydmj06dyycd" path="res://objects/box_regular.tscn" id="1_bo0kw"]
+[ext_resource type="PackedScene" uid="uid://0tewig0phwqj" path="res://objects/box_bouncy.tscn" id="2_72lwa"]
+[ext_resource type="PackedScene" uid="uid://cdxkhyk74dqk2" path="res://objects/box_iron.tscn" id="4_7yuem"]
+[ext_resource type="PackedScene" uid="uid://t8iil7scwvqm" path="res://objects/box_small_bouncy.tscn" id="5_ywhhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tjk4"]
+size = Vector2(1152, 70)
+
+[node name="World" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_068kc")
+object_templates = Array[PackedScene]([ExtResource("1_bo0kw"), ExtResource("2_72lwa"), ExtResource("4_7yuem"), ExtResource("5_ywhhh")])
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.227451, 0.513726, 1, 1)
+
+[node name="box_regular" parent="." instance=ExtResource("1_bo0kw")]
+position = Vector2(620, 149)
+rotation = 0.509636
+
+[node name="box_bouncy" parent="." instance=ExtResource("2_72lwa")]
+position = Vector2(566, 65)
+
+[node name="box_iron" parent="." instance=ExtResource("4_7yuem")]
+position = Vector2(540, 228)
+gravity_scale = 0.2
+
+[node name="box_small_bouncy" parent="." instance=ExtResource("5_ywhhh")]
+position = Vector2(576, 305)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(576, 614)
+
+[node name="Ground" type="ColorRect" parent="StaticBody2D"]
+offset_left = -576.0
+offset_top = -34.0
+offset_right = 576.0
+offset_bottom = 34.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8tjk4")

@@ -1,0 +1,668 @@
+[gd_scene load_steps=28 format=3 uid="uid://cio5bc7kf8qu0"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_411qu"]
+[ext_resource type="Texture2D" uid="uid://chpglqb33qjx4" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="1_c7qq0"]
+[ext_resource type="PackedScene" uid="uid://b40jgbxmjv7hv" path="res://misc/big_skull.tscn" id="2_etj6k"]
+[ext_resource type="PackedScene" uid="uid://2e22h60iwmgc" path="res://misc/ritual.tscn" id="2_tvaks"]
+[ext_resource type="Theme" uid="uid://cpk3mdug17qll" path="res://Impact_Font.tres" id="4_iibm4"]
+[ext_resource type="Texture2D" uid="uid://du8wdxg2x3ajk" path="res://addons/Self-Made/TabKey.png" id="5_fsi7i"]
+[ext_resource type="AudioStream" uid="uid://brvmmp31013nn" path="res://sound/sword_sound.wav" id="6_q24lm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pocj0"]
+radius = 14.0357
+
+[sub_resource type="Animation" id="Animation_g3bv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ufrh"]
+resource_name = "attack_down_1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mbhr6"]
+resource_name = "attack_down_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(0, 6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xhyl4"]
+resource_name = "attack_side_1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wbi50"]
+resource_name = "attack_side_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nmkan"]
+resource_name = "attack_up_1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6), Vector2i(4, 6), Vector2i(5, 6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qk8tq"]
+resource_name = "attack_up_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 7), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2nith"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0sjkr"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njhmy"]
+_data = {
+"RESET": SubResource("Animation_g3bv1"),
+"attack_down_1": SubResource("Animation_5ufrh"),
+"attack_down_2": SubResource("Animation_mbhr6"),
+"attack_side_1": SubResource("Animation_xhyl4"),
+"attack_side_2": SubResource("Animation_wbi50"),
+"attack_up_1": SubResource("Animation_nmkan"),
+"attack_up_2": SubResource("Animation_qk8tq"),
+"idle": SubResource("Animation_2nith"),
+"run": SubResource("Animation_0sjkr")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dswpd"]
+radius = 115.278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhsrh"]
+radius = 29.2746
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3dyo"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_werq6"]
+bg_color = Color(0, 1, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw1kv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqf2h"]
+bg_color = Color(1, 0.478431, 0.164706, 1)
+
+[sub_resource type="Animation" id="Animation_2xuyf"]
+resource_name = "Level Up"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerLevelLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27, 32.5), Vector2(-27, 32.5), Vector2(-27, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordDamageContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordDamageContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-36, 51), Vector2(-36, 51), Vector2(-36, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RitualDamageContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLevelLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RitualDamageContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-33, 51), Vector2(-33, 51), Vector2(-33, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_jexwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerLevelLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, 32.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordDamageContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordDamageContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-36, 51)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RitualDamageContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLevelLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RitualDamageContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-33, 51)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iakbg"]
+_data = {
+"Level Up": SubResource("Animation_2xuyf"),
+"RESET": SubResource("Animation_jexwe")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_411qu")
+ritual_scene = ExtResource("2_tvaks")
+death_prefab = ExtResource("2_etj6k")
+
+[node name="PressTabScreen" type="ColorRect" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -116.0
+offset_right = 116.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.709804)
+
+[node name="TabLabel" type="Label" parent="PressTabScreen"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 231.0
+offset_bottom = 65.0
+theme = ExtResource("4_iibm4")
+text = "Press TAB for Status, Objectives and Controls"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TabKey" type="Sprite2D" parent="PressTabScreen"]
+position = Vector2(116, 194)
+scale = Vector2(2, 2)
+texture = ExtResource("5_fsi7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -28)
+texture = ExtResource("1_c7qq0")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_pocj0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_njhmy")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_q24lm")
+volume_db = -20.0
+
+[node name="SwordArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_dswpd")
+debug_color = Color(0.631373, 0.458824, 0.694118, 0.164706)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_lhsrh")
+debug_color = Color(0.67451, 0.25098, 0.294118, 0.188235)
+
+[node name="HealthProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 12.0
+offset_right = 45.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_o3dyo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_werq6")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="ExpProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 24.0
+offset_right = 45.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yw1kv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sqf2h")
+max_value = 10.0
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="LevelUpLabels" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+
+[node name="LevelUpAnimationPlayer" type="AnimationPlayer" parent="LevelUpLabels"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_iakbg")
+}
+
+[node name="PlayerLevelLabel" type="Label" parent="LevelUpLabels"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 32.5
+offset_right = 27.0
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="SwordDamageContainer" type="HBoxContainer" parent="LevelUpLabels"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 51.0
+offset_right = 36.0
+offset_bottom = 74.0002
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SwordDamageLabel" type="Label" parent="LevelUpLabels/SwordDamageContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Sword"
+
+[node name="DamageValueLabel" type="Label" parent="LevelUpLabels/SwordDamageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.352941, 0.360784, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "+1"
+horizontal_alignment = 2
+
+[node name="RitualDamageContainer" type="HBoxContainer" parent="LevelUpLabels"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 51.0
+offset_right = 36.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RitualDamageLabel" type="Label" parent="LevelUpLabels/RitualDamageContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Magic"
+
+[node name="RitualValueLabel" type="Label" parent="LevelUpLabels/RitualDamageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.305882, 0.352941, 0.772549, 1)
+text = "+1"
+horizontal_alignment = 2
